@@ -1,0 +1,118 @@
+import random
+from gpiozero import Button
+
+keep = True
+
+button1 = Button(2)
+button2 = Button(22)
+
+def lightButton(num)
+	if num == 1:
+		for i in range(0, 15):
+			strip.setPixelColor(i, Color(255, 0, 0))
+			strip.show()
+			time.sleep(wait_ms/1000.0)
+	elif num == 2:
+		for i in range(15, 30):
+			strip.setPixelColor(i, Color(255, 0, 0))
+			strip.show()
+			time.sleep(wait_ms/1000.0)
+	elif num == 3:
+		for i in range(30, 45):
+			strip.setPixelColor(i, Color(255, 0, 0))
+			strip.show()
+			time.sleep(wait_ms/1000.0)
+	else:
+		for i in range(45, 60):
+			strip.setPixelColor(i, Color(255, 0, 0))
+			strip.show()
+			time.sleep(wait_ms/1000.0)
+def soundButton(num)
+#	if num == 1:
+#
+#	elif num == 2:
+#
+#	elif num == 3:
+#
+#	else:
+
+def makeSequence(mod)
+	seq = []
+	for i in range(4 * mod):
+		seq.append(random(0, 3))
+	return seq
+	
+def playSequence(seq)
+	for i in range(len(seq)):
+		lightButton(seq[i])
+		playButton(seq[i])
+
+def checkSequence(seq)
+	PlayerSeq = []
+	while len(seq) > len(PlayerSeq):
+		if button1.ispressed():
+			PlayerSeq.append(0)
+		elif button2.ispressed():
+			PlayerSeq.append(1)
+	for i in range(len(seq)):
+		if not seq[i] == PlayerSeq[i]:
+			return False
+		
+	return True
+
+def startGame()
+	#play openign sounds
+	select = False
+	choice = 0	
+	
+	while not select:	#change this part
+		if button1.ispressed():
+			choice = 1
+			select = True
+		elif button2.ispressed():
+			choice = 2
+			select = True
+	
+	return choice
+
+def playGame(players)
+	diffMod = 1	#Difficulty modifier which increase each round	
+	
+
+	if players == 1:
+		succeed == True
+		while succeed:
+			sequence = makeSequence(diffMod)
+			playSequence(sequence)
+			succeed = checkSequence(sequence)
+		#play game over stuff
+	else:
+		playerList = []
+		for i in range(0, players - 1):
+			playerList.append(i)
+		while(players > 1):
+			succeed = True
+			cur = random(1, players)
+			#playsound player CUR go ready 3 2 1 beep
+			sequence = makeSequence(diffMod)
+			playSequence(sequence)
+			succeed = checkSequence(sequence)
+			if not succeed:
+				playerList.remove(cur)
+				players--
+		#play playerList[0] you win!
+
+def b1()
+	keep = True
+def b2()
+	keep = False
+while(keep):
+	players = startGame()
+	playGame(players)
+	#ask to play again
+	button1.when_pressed() = b1()
+	button2.when_pressed() = b2()	
+	while keep:
+		
+
+
